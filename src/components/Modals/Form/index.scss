@@ -1,0 +1,30 @@
+@import '~scss/variables';
+@import '~scss/mixins';
+
+.body {
+  overflow: hidden;
+  max-height: none;
+  :global {
+    .ant-modal-body {
+      padding: 0;
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  @include vertical-center;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border-radius: $border-radius;
+  background-color: $background-color;
+  cursor: pointer;
+}
+
+.switch {
+  float: right;
+  right: 80px;
+  position: relative;
+}

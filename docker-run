@@ -1,0 +1,1 @@
+docker run --rm -p 8000:8000 -v $(pwd)/server/local_config.yaml:/root/appUI/server/local_config.yaml console

@@ -1,0 +1,32 @@
+@import '~scss/variables';
+
+.contentWrapper {}
+
+.content {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 500px;
+  max-height: calc(100vh - 222px);
+  overflow-y: auto;
+}
+
+
+.footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 12px 24px;
+  text-align: right;
+  :global {
+    button+button {
+      margin-left: 12px;
+    }
+  }
+}
+
+
+.confirm {
+  width: 920px;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+}

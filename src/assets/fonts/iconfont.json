@@ -1,0 +1,58 @@
+{
+  "id": "1722696",
+  "name": "react-koa-mobx",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "486905",
+      "name": "叉号",
+      "font_class": "close",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "3640197",
+      "name": "问号",
+      "font_class": "question",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "845854",
+      "name": "download",
+      "font_class": "download",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "11215463",
+      "name": "upload",
+      "font_class": "upload",
+      "unicode": "e728",
+      "unicode_decimal": 59176
+    },
+    {
+      "icon_id": "1207861",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "13260031",
+      "name": "trash",
+      "font_class": "trash",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "1029905",
+      "name": "smile",
+      "font_class": "smile",
+      "unicode": "e737",
+      "unicode_decimal": 59191
+    }
+  ]
+}

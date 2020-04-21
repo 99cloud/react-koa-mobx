@@ -1,0 +1,22 @@
+@import '~scss/variables';
+
+.main {
+  min-width: $content-width;
+  overflow-y: auto;
+  margin: 26px 26px 0;
+}
+
+.nav {
+  left: -($nav-width + 10px);
+}
+
+.header {
+  z-index: 200;
+  background-color: $layout-header-color;
+  color: $white;
+}
+
+.base {
+  background-color: #f0f2f5;
+  height: 100vh;
+}

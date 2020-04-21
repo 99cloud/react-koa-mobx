@@ -1,0 +1,31 @@
+@import '~scss/variables';
+
+.wrapper {
+  min-height: calc(100vh - 108px);
+}
+
+:global {
+    .more {
+      font-size: 20px;
+    }
+  }
+
+.menu {
+  padding: 8px;
+  min-width: 200px;
+}
+
+.menu-items {
+  padding: 8px 22px;
+  height: auto;
+  font-weight: 400;
+  color: #000;
+}
+
+.danger {
+  color: red;
+}
+
+.text {
+  margin-left: 10px;
+}

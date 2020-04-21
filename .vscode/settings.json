@@ -1,0 +1,21 @@
+{
+  "psi-header.config": {
+    "forceToTop": true,
+    "blankLinesAfter": 1
+  },
+  "psi-header.templates": [
+    {
+      "language": "javascript",
+      "template": ["Created: <<filecreated>>", "Author: <<author>>"]
+    },
+    {
+      "language": "javascriptreact",
+      "mapTo": "javascript"
+    }
+  ],
+  "psi-header.changes-tracking": {
+    "isActive": true,
+    "enforceHeader": true,
+    "include": ["javascript", "javascriptreact"]
+  }
+}
