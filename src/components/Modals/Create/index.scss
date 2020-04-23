@@ -11,18 +11,6 @@
   }
 }
 
-.close {
-  position: absolute;
-  @include vertical-center;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  padding: 6px;
-  border-radius: $border-radius;
-  background-color: $background-color;
-  cursor: pointer;
-}
-
 .switch {
   float: right;
   right: 80px;

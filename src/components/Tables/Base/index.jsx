@@ -1,14 +1,16 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { toJS } from 'mobx'
-import { Table, Button, Row, Col, Input, Select, Tag } from 'antd'
+import { Table, Button, Row, Col } from 'antd'
 import FilterSearch from '../FilterSearch'
 
 import styles from './index.scss'
-
-const { Search } = Input
-const { Option } = Select
 
 export default class BaseTable extends React.Component {
   static propTypes = {
@@ -75,13 +77,17 @@ export default class BaseTable extends React.Component {
   }
 
   handleSearch(content) {
+    // eslint-disable-next-line no-console
     console.log('search', content)
   }
 
-  handleChange(value) {}
+  handleChange(value) {
+    // eslint-disable-next-line no-console
+    console.log(value)
+  }
 
   renderSearch() {
-    const { hideSearch, searchType, keyword, dropDowns } = this.props
+    const { hideSearch, dropDowns } = this.props
 
     if (hideSearch) {
       return null
@@ -141,7 +147,7 @@ export default class BaseTable extends React.Component {
     const { onDelete } = this.props
 
     return (
-      <React.Fragment>
+      <>
         {onDelete && (
           <Button
             type="danger"
@@ -152,7 +158,7 @@ export default class BaseTable extends React.Component {
             {t('Delete')}
           </Button>
         )}
-      </React.Fragment>
+      </>
     )
   }
 
@@ -198,7 +204,7 @@ export default class BaseTable extends React.Component {
     const props = {}
 
     return (
-      <React.Fragment>
+      <>
         {!hideHeader && this.renderTableTitle()}
         <Table
           size="middle"
@@ -232,7 +238,7 @@ export default class BaseTable extends React.Component {
           {...props}
           {...extraProps}
         />
-      </React.Fragment>
+      </>
     )
   }
 }

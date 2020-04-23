@@ -34,4 +34,16 @@ export default {
   'Cancel Select': '取消选择',
 
   TOTAL_ITEMS: '共 {num} 个条目',
+
+  DELETE_TITLE: '{type}删除确认?',
+  DELETE_TIP:
+    '确定删除{type} <strong>{resource}</strong> ? {type}删除后将无法恢复。',
+  DELETE_CONFIRM_TIP:
+    '请输入{type}名称 <strong>{resource}</strong> 确保您已了解操作所带来的风险。',
+  DELETE_CONFIRM_PLACEHOLDER: '请输入{resource}',
+
+  'Created Successfully': '创建成功',
+  'Updated Successfully': '更新成功',
+  'Deleted Successfully': '删除成功',
+  'Canceled Successfully': '取消成功',
 }

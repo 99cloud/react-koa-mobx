@@ -1,8 +1,13 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { Form, Input } from 'antd'
 
 export default () => (
-  <React.Fragment>
+  <>
     <Form.Item
       name="age"
       label={t('Age')}
@@ -10,5 +15,5 @@ export default () => (
     >
       <Input name="age" autoFocus={true} />
     </Form.Item>
-  </React.Fragment>
+  </>
 )

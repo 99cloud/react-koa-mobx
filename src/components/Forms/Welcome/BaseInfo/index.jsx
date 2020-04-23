@@ -1,8 +1,13 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { Form, Input } from 'antd'
 
 export default () => (
-  <React.Fragment>
+  <>
     <Form.Item
       name="metadata.name"
       label={t('Name')}
@@ -17,5 +22,5 @@ export default () => (
     >
       <Input.TextArea />
     </Form.Item>
-  </React.Fragment>
+  </>
 )

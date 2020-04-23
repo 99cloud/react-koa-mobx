@@ -1,9 +1,16 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import Base from 'core/containers/List'
 import WelcomeStore from 'stores/welcome'
-import FormModal from 'components/Modals/Form'
+import CreateModal from 'components/Modals/Create'
+import EditModal from 'components/Modals/Edit'
+// eslint-disable-next-line no-unused-vars
 import DemoForm from 'components/Forms/Demo'
 
 import FORM_STEPS from 'configs/steps/welcome'
@@ -33,12 +40,9 @@ class Welcome extends Base {
     return 'welcome'
   }
 
+  // Return <DemoForm /> or FORM_STEPS
   get steps() {
     return FORM_STEPS
-  }
-
-  get form() {
-    return <DemoForm />
   }
 
   get formTemplate() {
@@ -88,12 +92,11 @@ class Welcome extends Base {
 
     return (
       <div>
-        <FormModal
+        <CreateModal
           visible={createModal}
           name={this.name}
           module={this.module}
           steps={this.steps}
-          // formItem={this.form}
           formTemplate={this.formTemplate}
           isSubmitting={isSubmitting}
           onOk={this.handleCreate}
@@ -101,7 +104,7 @@ class Welcome extends Base {
           // withCode={true}
           // onlyCode={true}
         />
-        <FormModal
+        <EditModal
           visible={editModal}
           name={this.name}
           module={this.module}

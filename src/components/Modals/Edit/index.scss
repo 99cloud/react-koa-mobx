@@ -1,0 +1,13 @@
+@import '~scss/variables';
+@import '~scss/mixins';
+
+.body {
+  overflow: hidden;
+  max-height: none;
+  :global {
+    .ant-modal-body {
+      padding: 0;
+    }
+  }
+}
+

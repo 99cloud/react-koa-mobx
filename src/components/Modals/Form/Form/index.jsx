@@ -1,12 +1,16 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React, { useCallback, useState, useEffect } from 'react'
-import { Form } from 'antd'
+import { Form, Button } from 'antd'
 import Steps from 'components/Steps'
-import { get, isEmpty } from 'lodash'
+import { get, isEmpty, isArray } from 'lodash'
 import { LAYOUT } from 'utils'
 import PropTypes from 'prop-types'
 
 import styles from './index.scss'
-import Footer from './Footer'
 
 const FormMode = props => {
   const [form] = Form.useForm()
@@ -66,37 +70,23 @@ const FormMode = props => {
   }
 
   const renderFormItem = () => {
-    const { formItem } = props
-    // no step
-    if (!steps && formItem) {
-      return formItem
+    if (!isArray(steps)) {
+      return steps
     }
-    // Step Component
+
     const Component = get(steps, `[${currentStep}].component`)
 
     return <Component />
   }
 
-  const isReview = steps ? currentStep === steps.length - 1 : true
+  const isReview = isArray(steps) ? currentStep === steps.length - 1 : true
 
   const renderSteps = () => {
-    if (steps && steps.length > 1) {
+    if (isArray(steps) && steps.length > 1) {
       return <Steps steps={steps} current={currentStep} />
     }
     return null
   }
-
-  const renderFooter = () => (
-    <Footer
-      currentStep={currentStep}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
-      isReview={isReview}
-      form={form}
-      onCancel={onCancel}
-      isSubmitting={isSubmitting}
-    />
-  )
 
   return (
     <div className={styles.contentWrapper}>
@@ -110,7 +100,19 @@ const FormMode = props => {
       >
         {renderFormItem()}
       </Form>
-      {renderFooter()}
+      <div className={styles.footer}>
+        {currentStep > 0 && (
+          <Button onClick={handlePrev}>{t('Previous')}</Button>
+        )}
+        <Button onClick={onCancel}>{t('Cancel')}</Button>
+        <Button
+          type="primary"
+          loading={isSubmitting}
+          onClick={isReview ? () => form.submit() : handleNext}
+        >
+          {isReview ? t('Create') : t('Next')}
+        </Button>
+      </div>
     </div>
   )
 }
@@ -118,7 +120,7 @@ const FormMode = props => {
 FormMode.propTypes = {
   module: PropTypes.string,
   type: PropTypes.string,
-  steps: PropTypes.array,
+  steps: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   formTemplate: PropTypes.object,
   isSubmitting: PropTypes.bool,
   onOk: PropTypes.func,
