@@ -1,3 +1,8 @@
+/*
+ * Created: Fri Apr 24 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import classnames from 'classnames'
 import { parse } from 'qs'
@@ -240,7 +245,7 @@ export default class BaseList extends React.Component {
 
   renderEmpty() {
     // todo:
-    return <div>暂无数据</div>
+    return <div>{t('No Data')}</div>
   }
 
   renderHeader() {

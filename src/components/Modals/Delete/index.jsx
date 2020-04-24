@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Modal, Input } from 'antd'
@@ -56,11 +61,14 @@ export default class DeleteModal extends React.Component {
     let tip =
       desc ||
       (resource && type
-        ? t.html('DELETE_CONFIRM_TIP', { type, resource })
-        : t.html('DELETE_TIP', { type, resource }))
+        ? t('DELETE_CONFIRM_TIP', {
+            type,
+            resource,
+          })
+        : t('DELETE_TIP', { type, resource }))
 
     if (app) {
-      tip = t.html('DELETE_APP_RESOURCE_TIP', { type, resource, app })
+      tip = t('DELETE_APP_RESOURCE_TIP', { type, resource, app })
     }
 
     return (

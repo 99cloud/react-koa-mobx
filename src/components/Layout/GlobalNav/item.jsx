@@ -1,12 +1,13 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { Menu } from 'antd'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
-import { SmileFilled } from '@ant-design/icons'
 import Icon from 'components/Icon'
-
-import styles from './index.scss'
 
 const { SubMenu } = Menu
 
@@ -56,7 +57,7 @@ export default class NavItem extends React.Component {
     return (
       <Menu.Item key={item.name} {...this.props}>
         <NavLink to={`${prefix}/${item.name}`} onClick={onClick}>
-          {this.renderIcon(item.icon)} {t(item.title)}
+          {this.renderIcon(item.icon)} {item.title}
         </NavLink>
       </Menu.Item>
     )

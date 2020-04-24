@@ -1,8 +1,14 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import { action, observable, extendObservable } from 'mobx'
 import { RouterStore } from 'mobx-react-router'
 import { parse } from 'qs'
 import { getQueryString } from 'utils'
 import cookie from 'utils/cookie'
+import i18n from '../core/i18n'
 
 export default class RootStore {
   @observable
@@ -46,6 +52,7 @@ export default class RootStore {
     const lang = cookie('lang') === 'zh' ? 'en' : 'zh'
 
     cookie('lang', lang)
+    i18n.i18n.changeLanguage(lang)
     window.location.reload()
   }
 

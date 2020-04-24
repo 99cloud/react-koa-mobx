@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 
 import styles from './index.scss'
@@ -38,7 +43,7 @@ export default class NotFound extends React.Component {
         <div className={styles.text}>
           <div className="h1">Not Found</div>
           <p>
-            {t.html('NOT_FOUND_DESC', {
+            {t('NOT_FOUND_DESC', {
               time: this.state.time,
               link: '/',
             })}
