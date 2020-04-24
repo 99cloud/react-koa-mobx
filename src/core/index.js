@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom'
 import { createBrowserHistory } from 'history'
 import { syncHistoryWithStore } from 'mobx-react-router'
 import { AppContainer } from 'react-hot-loader'
-// import { LocaleProvider } from '@pitrix/lego-ui'
 import { Spin } from 'antd'
 
 import request from 'utils/request'
@@ -17,7 +16,6 @@ import RootStore from 'stores/root'
 import App from './App'
 import GlobalValue from './global'
 import i18n from './i18n'
-// import './i18n'
 
 require('@babel/polyfill')
 require('utils/polyfills')
@@ -41,13 +39,9 @@ window.onunhandledrejection = function(e) {
 
 window.t = i18n.t
 
-// window.t.html = key => key
-
 window.request = request
 
 globals.app = new GlobalValue()
-
-// const { locales } = i18n.init()
 
 const store = new RootStore()
 const browserHistory = createBrowserHistory()
@@ -57,9 +51,7 @@ const render = component => {
   ReactDOM.render(
     <AppContainer>
       <Suspense fallback={<Spin wrapperClassName="page-loading" />}>
-        {/* <LocaleProvider locales={locales} localeKey="lang" ignoreWarnings> */}
         {component}
-        {/* </LocaleProvider> */}
       </Suspense>
     </AppContainer>,
     document.getElementById('root')

@@ -60,6 +60,24 @@ Now, you can access http://localhost:8000 to view the app.
 yarn test
 ```
 
+### I18n
+
+1. Mark the text to be translated。examples: <code>t('Name')</code>
+1. Scanner by run the command:
+
+````
+grunt
+````
+
+1. Add translates in translation.json
+
+```
+{
+  "Age": "年龄",
+  "Name": "名称",
+}
+```
+
 ### Build App for production
 
 The project can be built for production by using the following task:
