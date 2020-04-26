@@ -28,7 +28,7 @@
   "Session timeout or this account is logged in elsewhere, please login again": "",
   "Created Time": "创建时间",
   "No Data": "暂无数据",
-  "DELETE_CONFIRM_TIP": "请输入{{type}}名称<strong>{{resource}}</strong> 确保您已了解操作所带来的风险。",
+  "DELETE_CONFIRM_TIP": "请输入<strong>{{type}}</strong>名称 <strong>{{resource}}</strong> 确保您已了解操作所带来的风险。",
   "DELETE_TIP": "确定删除{{type}} <strong>{{resource}}</strong> ? {{type}}删除后将无法恢复。",
   "DELETE_APP_RESOURCE_TIP": "",
   "NOT_FOUND_DESC": ""

@@ -9,6 +9,7 @@ import { createBrowserHistory } from 'history'
 import { syncHistoryWithStore } from 'mobx-react-router'
 import { AppContainer } from 'react-hot-loader'
 import { Spin } from 'antd'
+import { Trans } from 'react-i18next'
 
 import request from 'utils/request'
 
@@ -38,6 +39,15 @@ window.onunhandledrejection = function(e) {
 }
 
 window.t = i18n.t
+window.t.html = (key, options) => {
+  const { type, resource } = options // You need to add the variable here, if it needs to be wrapped by a html tag.
+  return (
+    <Trans i18nKey={key}>
+      {{ type }}
+      {{ resource }}
+    </Trans>
+  )
+}
 
 window.request = request
 
