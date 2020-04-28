@@ -15,7 +15,7 @@ server:
 
   # backend service gateway server
   gatewayServer:
-    url: http://localhost:7300/mock/5e6f7418d2c2ec3f0b997955/
+    url: http://rap2.taobao.org:38080/app/mock/252252
     wsUrl: ws://ks-apigateway.demo-system.svc
 
 client:

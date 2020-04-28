@@ -7,7 +7,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { toJS } from 'mobx'
-import { Table, Button, Row, Col } from 'antd'
+import { isEmpty, isEqual } from 'lodash'
+import { SearchOutlined } from '@ant-design/icons'
+import { Table, Button, Row, Col, Input } from 'antd'
 import FilterSearch from '../FilterSearch'
 
 import styles from './index.scss'
@@ -76,14 +78,21 @@ export default class BaseTable extends React.Component {
     this.props.onSelectRowKeys([])
   }
 
-  handleSearch(content) {
-    // eslint-disable-next-line no-console
-    console.log('search', content)
+  handleSearch = e => {
+    const content = e.target.value
+
+    this.props.onFetch({ keyword: content })
   }
 
-  handleChange(value) {
-    // eslint-disable-next-line no-console
-    console.log(value)
+  handleFilterInput = tags => {
+    const filters = {}
+    tags.forEach(n => {
+      filters[n.label] = n.value
+    })
+
+    if (!isEqual(filters, this.props.filters)) {
+      this.props.onFetch(filters, true)
+    }
   }
 
   renderSearch() {
@@ -93,14 +102,21 @@ export default class BaseTable extends React.Component {
       return null
     }
 
+    if (!isEmpty(dropDowns)) {
+      return (
+        <FilterSearch dropDowns={dropDowns} onChange={this.handleFilterInput} />
+      )
+    }
+
+    const placeholder =
+      this.props.placeholder || t('Please input a keyword to find')
     return (
-      <FilterSearch dropDowns={dropDowns} />
-      // <Search
-      //   className={styles.keyword}
-      //   value={keyword}
-      //   onSearch={this.handleSearch}
-      //   placeholder={placeholder}
-      // />
+      <Input
+        prefix={<SearchOutlined />}
+        placeholder={placeholder}
+        className={styles.keyword}
+        onPressEnter={this.handleSearch}
+      />
     )
   }
 
@@ -213,7 +229,6 @@ export default class BaseTable extends React.Component {
           columns={columns}
           dataSource={toJS(data)}
           loading={isLoading}
-          onChange={this.handleChange}
           rowSelection={{
             selectedRowKeys,
             getCheckboxProps,

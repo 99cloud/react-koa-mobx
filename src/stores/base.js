@@ -1,3 +1,8 @@
+/*
+ * Created: Sun Apr 26 2020
+ * Author: Apple
+ */
+
 import { get } from 'lodash'
 import { action, observable } from 'mobx'
 
@@ -50,11 +55,12 @@ export default class BaseStore {
   }
 
   @action
-  async fetchList({ pageSize = 10, current = 1 } = {}) {
+  async fetchList({ pageSize = 10, current = 1, ...filters } = {}) {
     this.list.isLoading = true
     const params = {
       pageSize,
       current,
+      ...filters,
     }
 
     const result = await request.get(this.getListUrl(), params)
@@ -67,6 +73,7 @@ export default class BaseStore {
       pageSize: Number(pageSize) || 10,
       current: Number(current) || 1,
       isLoading: false,
+      filters,
       ...(this.list.silent ? {} : { selectedRowKeys: [] }),
     })
 

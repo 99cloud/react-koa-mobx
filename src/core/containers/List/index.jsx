@@ -369,7 +369,7 @@ export default class BaseList extends React.Component {
     } = this.list
 
     const pagination = { current, pageSize, total }
-    this.getDropDowns()
+
     return (
       <BaseTable
         data={data}

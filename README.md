@@ -17,7 +17,6 @@
 
 1. <Spin wrapperClassName="page-loading" /> 位置
 1. Icon SVG组件无法捕获hover事件，外层加span可解决
-1. Table filter search
 
 ## Developer Guide
 
