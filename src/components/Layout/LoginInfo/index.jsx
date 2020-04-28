@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React, { Component } from 'react'
 import { Dropdown, Menu } from 'antd'
 import {
@@ -56,26 +61,6 @@ export default class LoginInfo extends Component {
 
   render() {
     const { className } = this.props
-
-    // if (!globals.user.name) {
-    //   return (
-    //     <div className={classnames(styles.notLoggedIn, className)}>
-    //       <div className={styles.name}>
-    //         {/* <Icon
-    //           name="human"
-    //           type="light"
-    //           color={{
-    //             primary: '#f5a623',
-    //             secondary: '#8d663e',
-    //           }}
-    //         /> */}
-    //         <a className={styles.loginLabel} href="/login?referer=/apps">
-    //           {t('Login')}
-    //         </a>
-    //       </div>
-    //     </div>
-    //   )
-    // }
 
     return (
       <div className={classnames(styles.logined, className)}>

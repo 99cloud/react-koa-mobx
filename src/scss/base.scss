@@ -76,85 +76,6 @@ pre {
   }
 }
 
-.code {
-  display: block;
-  padding: 12px;
-  border: 1px solid $light-color04;
-  background-color: $light-color01;
-}
-
-.hover-show {
-  visibility: hidden;
-}
-
-.item-name {
-  display: flex;
-  color: $text-color;
-  font-family: $font-family-id;
-  font-size: $body-size;
-  font-weight: 600;
-
-  .icon {
-    margin-right: 8px;
-    align-self: center;
-  }
-
-  &:hover {
-    strong {
-      color: $primary;
-    }
-  }
-}
-
-.hidden-input {
-  position: absolute;
-  width: 0;
-  opacity: 0;
-}
-
-::-moz-selection {
-  background: #369a6a;
-  color: #fff;
-}
-
-::selection {
-  background: #369a6a;
-  color: #fff;
-}
-
-.icon-notification {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 16px;
-  width: 16px;
-  &.icon-success {
-    background-image: $icon-status-success;
-  }
-  &.icon-info {
-    background-image: $icon-status-info;
-  }
-  &.icon-warning {
-    background-image: $icon-status-warning;
-  }
-  &.icon-error {
-    background-image: $icon-status-error;
-  }
-}
-
-.header-shadow {
-  box-shadow: 0 4px 8px 0 rgba(36, 46, 66, 0.06) !important;
-}
-
-.apps-dark-header {
-  background-color: $dark-color08 !important;
-}
-
-.loading {
-  margin-top: 100px;
-  text-align: center;
-}
-
 .custom-icon {
   svg {
     width: 16px;
@@ -168,21 +89,6 @@ pre {
       color: #00aa72;
       fill: #90e0c5;
     }
-  }
-}
-
-[data-tooltip]:hover {
-  &::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: -26px;
-    display: inline-block;
-    padding: 3px 6px;
-    border-radius: 2px;
-    background: #000;
-    color: #fff;
-    white-space: nowrap;
-    z-index: 100;
   }
 }
 

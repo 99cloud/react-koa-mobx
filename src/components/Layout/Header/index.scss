@@ -22,10 +22,6 @@
     );
     border-image-slice: 1;
   }
-
-  .header-shadow .header-bottom {
-    display: none;
-  }
 }
 
 .logo {
@@ -68,7 +64,7 @@
 :global {
   .header-button {
     div {
-      color: $light-color02;
+      color: $white;
     }
     &:hover {
       div {

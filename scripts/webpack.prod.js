@@ -19,6 +19,9 @@ const root = path => resolve(__dirname, `../${path}`)
 
 const baseConfig = require('./webpack.base')
 
+const theme = require('./theme')
+
+
 const smp = new SpeedMeasurePlugin()
 
 module.exports = smp.wrap({
@@ -53,6 +56,23 @@ module.exports = smp.wrap({
             options: baseConfig.postCssOptions,
           },
           { loader: 'fast-sass-loader' },
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'cache-loader' },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: theme,
+              javascriptEnabled: true,
+            }
+          },
         ],
       },
       {

@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 module.exports = {
   presets: [
     [
@@ -30,6 +35,7 @@ module.exports = {
         },
       },
     ],
+    ["import", { "libraryName": "antd", "style": true }],
     'recharts',
   ],
   env: {

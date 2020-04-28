@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 const { resolve } = require('path')
 const autoprefixer = require('autoprefixer')
 const HappyPack = require('happypack')
@@ -35,13 +40,14 @@ module.exports = {
     },
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx', '.scss', '.less'],
     symlinks: false,
     modules: [root('src'), root('src/pages'), 'node_modules'],
     alias: {
       common: root('common'),
       src: root('src'),
       scss: root('src/scss'),
+      less: root('src/less'),
       core: root('src/core'),
       components: root('src/components'),
       stores: root('src/stores'),

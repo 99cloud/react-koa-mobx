@@ -32,26 +32,6 @@
   }
 }
 
-.notLoggedIn {
-  .name {
-    color: $yellow-color03;
-    font-size: $size-small;
-    line-height: 20;
-
-    :global {
-      svg {
-        --primary-color: #{$yellow-color03};
-        --second-color: #{$yellow-color05};
-      }
-    }
-  }
-
-  .loginLabel {
-    color: $yellow-color03;
-    cursor: pointer;
-  }
-}
-
 .down {
   margin-left: 10px;
 }

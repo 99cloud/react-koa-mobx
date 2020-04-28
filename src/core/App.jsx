@@ -1,3 +1,8 @@
+/*
+ * Created: Fri Apr 24 2020
+ * Author: Apple
+ */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Router } from 'react-router'

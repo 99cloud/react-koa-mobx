@@ -1,3 +1,8 @@
+/*
+ * Created: Sun Apr 26 2020
+ * Author: Apple
+ */
+
 const { resolve } = require('path')
 const merge = require('lodash/merge')
 const webpack = require('webpack')
@@ -5,6 +10,8 @@ const WebpackNotifier = require('webpack-notifier')
 const baseConfig = require('./webpack.base')
 
 const root = path => resolve(__dirname, `../${path}`)
+
+const theme = require('./theme')
 
 const config = {
   mode: 'development',
@@ -37,6 +44,22 @@ const config = {
           },
           {
             loader: 'fast-sass-loader',
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: theme,
+              javascriptEnabled: true,
+            }
           },
         ],
       },
