@@ -1,3 +1,9 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ * iconclose、iconquestion、icondownload、iconupload、iconedit、icontrash、iconsmile、
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
@@ -12,7 +18,7 @@ const Icon = props => {
       aria-hidden="true"
       style={styles}
     >
-      <use xlinkHref={`#${name}`} />
+      <use xlinkHref={`#${name || 'iconsmile'}`} />
     </svg>
   )
 }

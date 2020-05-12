@@ -120,13 +120,16 @@ export default class BaseList extends React.Component {
   getColumns = () => []
 
   getDropDowns = () => {
-    const dropDowns = this.getColumns()
-      .filter(column => this.dropdowns.includes(column.dataIndex))
-      .map(item => ({
-        name: item.title,
-        value: item.dataIndex,
-      }))
+    const dropDowns = {}
 
+    this.getColumns()
+      .filter(column => column.search)
+      .forEach(item => {
+        dropDowns[item.key] = {
+          text: item.title,
+          icon: item.icon,
+        }
+      })
     return dropDowns
   }
 
@@ -372,15 +375,11 @@ export default class BaseList extends React.Component {
 
     return (
       <BaseTable
-        data={data}
         columns={this.getColumns()}
-        filters={filters}
-        keyword={keyword}
-        pagination={pagination}
-        isLoading={isLoading}
         rowKey={this.rowKey}
         dropDowns={this.getDropDowns()}
         selectedRowKeys={toJS(selectedRowKeys)}
+        {...{ data, filters, keyword, pagination, isLoading }}
         {...this.getEnabledTableProps()}
       />
     )

@@ -1,0 +1,88 @@
+@import '~scss/variables';
+
+$inputHeight: 32px;
+
+.container {
+  border-radius: 40px;
+  border: solid 1px $border-color;
+  line-height: $inputHeight;
+  background: #fff;
+  min-height: $inputHeight;
+  position: relative;
+}
+
+.currentParam {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.input {
+  margin-left: 16px;
+  position: relative;
+  display: inline-block;
+  input {
+    width: 300px;
+    display: inline-block;
+    border: none;
+    outline: none;
+  }
+}
+
+.dropdown {
+  padding: 8px;
+  position: absolute;
+  background: #fff;
+  z-index: 3;
+  border: solid 1px rgba(36, 46, 66, 0.1);
+  border-radius: 4px;
+  margin-top: 3px;
+  @at-root {
+    .dropdownItem {
+      line-height: 32px;
+      border-radius: 4px;
+      min-width: 206px;
+      padding: 0 8px;
+      cursor: pointer;
+      &:hover {
+        background-color: $bg-color;
+      }
+      font-weight: 500;
+    }
+    .icon {
+      vertical-align: sub;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      display: inline-block;
+      :global {
+        .icon {
+          vertical-align: baseline;
+        }
+      }
+    }
+  }
+}
+
+.param {
+  border-radius: 100px;
+  background-color: $bg-text;
+  border: 1px solid $border-color;
+  color: $black;
+  margin-left: 8px;
+  line-height: 28px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  @at-root {
+    .removeParam {
+      color: $black;
+      font-size: 10px;
+      margin-left: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}
+

@@ -4,7 +4,8 @@
 $white: #ffffff;
 $black: #000000;
 $light-color01: #f9fbfd;
-$light-color06: #ccd3db;
+$light-color02: #fafafa;
+$light-color06: #d9d9d9;
 $light-color08: #abb4be;
 $dark-color01: #79879c;
 $dark-color03: #5f708a;
@@ -77,6 +78,7 @@ $heading-heights: (
 $body-bg-color: $white;
 $bg-color:  $white;
 $th-bg-color: $white;
+$bg-text: $light-color02;
 
 // font
 $font-family: 'PingFang SC', 'Lantinghei SC', 'Helvetica Neue', Helvetica, Arial,

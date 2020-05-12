@@ -49,12 +49,6 @@ class Welcome extends Base {
     return FORM_TEMPLATES[this.module]()
   }
 
-  get dropdowns() {
-    const dropdowns = ['name', 'description']
-
-    return dropdowns
-  }
-
   getColumns = () => [
     {
       title: 'Name',
@@ -63,11 +57,15 @@ class Welcome extends Base {
       render: (text, record) => (
         <Link to={`${this.prefix}/${record.id}`}>{text}</Link>
       ),
+      search: true,
+      icon: 'iconsmile',
     },
     {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
+      // search: true,
+      icon: 'iconsmile',
     },
     {
       title: 'Note',

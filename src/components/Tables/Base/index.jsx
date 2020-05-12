@@ -7,10 +7,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { toJS } from 'mobx'
-import { isEmpty, isEqual } from 'lodash'
+import { isEmpty } from 'lodash'
 import { SearchOutlined } from '@ant-design/icons'
 import { Table, Button, Row, Col, Input } from 'antd'
-import FilterSearch from '../FilterSearch'
+import SearchBar from '../SearchBar'
 
 import styles from './index.scss'
 
@@ -36,7 +36,7 @@ export default class BaseTable extends React.Component {
     actions: PropTypes.array,
     selectActions: PropTypes.array,
     extraProps: PropTypes.object,
-    dropDowns: PropTypes.array,
+    dropDowns: PropTypes.object,
   }
 
   static defaultProps = {
@@ -48,12 +48,6 @@ export default class BaseTable extends React.Component {
     hideSearch: false,
     hideCustom: false,
     extraProps: {},
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.state = {}
   }
 
   handlePagination = page => {
@@ -84,19 +78,21 @@ export default class BaseTable extends React.Component {
     this.props.onFetch({ keyword: content })
   }
 
-  handleFilterInput = tags => {
+  handleFilterInput = params => {
     const filters = {}
-    tags.forEach(n => {
-      filters[n.label] = n.value
+    params.forEach(n => {
+      filters[n.key] = n.value
     })
-
-    if (!isEqual(filters, this.props.filters)) {
-      this.props.onFetch(filters, true)
-    }
+    // eslint-disable-next-line no-console
+    console.log('filters', filters)
   }
 
   renderSearch() {
     const { hideSearch, dropDowns } = this.props
+
+    const params = {
+      query: [],
+    }
 
     if (hideSearch) {
       return null
@@ -104,7 +100,11 @@ export default class BaseTable extends React.Component {
 
     if (!isEmpty(dropDowns)) {
       return (
-        <FilterSearch dropDowns={dropDowns} onChange={this.handleFilterInput} />
+        <SearchBar
+          params={params}
+          dropDowns={dropDowns}
+          onChange={this.handleFilterInput}
+        />
       )
     }
 
