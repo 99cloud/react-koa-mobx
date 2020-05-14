@@ -77,6 +77,8 @@ grunt
 }
 ```
 
+1. The parameter passed in the t function is a variable, which cannot be scanned automatically and needs to be manually added to <code>/zh/translation.json</code>
+
 ### Build App for production
 
 The project can be built for production by using the following task:

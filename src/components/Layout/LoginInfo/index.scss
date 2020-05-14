@@ -2,22 +2,14 @@
 
 .logined {
   display: inline-block;
-  line-height: 1.67;
   font-family: $font-family-id;
   z-index: 100;
   cursor: pointer;
-
-  :global {
-    .popper[x-placement^='top'] {
-      margin-bottom: 0;
-      transform: translate3d(-31px, 27px, 0px) !important;
-    }
-  }
 }
 
 .name {
-  font-size: $body-size;
-  color: #000;
+  font-size: 12px;
+  color: #fff;
 
   :global .icon {
     margin-top: -2px;

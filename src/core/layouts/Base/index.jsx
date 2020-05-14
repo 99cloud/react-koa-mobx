@@ -1,13 +1,28 @@
+/*
+ * Created: Fri Apr 24 2020
+ * Author: Apple
+ */
+
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
+import { Layout, Breadcrumb } from 'antd'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import { inject, observer } from 'mobx-react'
 import { renderRoutes } from 'utils/router.config'
 
-import { Header, GlobalNav, Breads } from 'components/Layout'
+import { GlobalNav, LoginInfo } from 'components/Layout'
 
 import styles from './index.scss'
+
+const { Header, Sider } = Layout
+
+const LogoCom = () => (
+  <div className={styles.logo}>
+    <Link to="/">
+      {/* <img src={globals.config.logo || '/assets/logo.png'} alt="logo" /> */}
+    </Link>
+  </div>
+)
 
 @inject('rootStore')
 @observer
@@ -21,7 +36,6 @@ class BaseLayout extends Component {
     super(props)
 
     this.navRef = React.createRef()
-    this.headerRef = React.createRef()
 
     this.routes = props.route.routes
   }
@@ -32,57 +46,45 @@ class BaseLayout extends Component {
     }
   }
 
-  componentDidUpdate(nextProps) {
-    if (nextProps.rootStore.showGlobalNav) {
-      // document.removeEventListener('click', this.handleClick)
-      // document.addEventListener('click', this.handleClick)
-    }
-  }
-
-  handleClick = e => {
-    if (this.navRef.current && !this.navRef.current.contains(e.target)) {
-      this.props.rootStore.hideGlobalNav()
-      document.removeEventListener('click', this.handleClick)
-    }
-  }
-
-  handleNavItemClick = () => {
-    // this.props.rootStore.hideGlobalNav()
-  }
-
-  handleJumpTo = link => {
-    this.props.rootStore.routing.push(link)
-  }
-
   render() {
-    const { location, match, rootStore } = this.props
+    const { location, match } = this.props
+
     return (
-      <div>
-        <Row className={styles.base}>
-          <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+      <Layout>
+        <Header className="header">
+          <LogoCom />
+          <GlobalNav
+            innerRef={this.navRef}
+            match={match}
+            location={location}
+            navs={globals.app.getGlobalNavs()}
+            className={styles.nav}
+          />
+          <LoginInfo className={styles.logininfo} />
+        </Header>
+        <Layout>
+          <Sider width={200} className="site-layout-background">
             <GlobalNav
               innerRef={this.navRef}
-              className={classnames({
-                [styles.nav]: !rootStore.showGlobalNav,
-              })}
               match={match}
               location={location}
               navs={globals.app.getGlobalNavs()}
               onItemClick={this.handleNavItemClick}
+              isTopMenu={false}
             />
-          </Col>
-          <Col xs={20} sm={20} md={20} lg={20} xl={20}>
-            <Header
-              innerRef={this.headerRef}
-              className={styles.header}
-              location={location}
-              onToggleNav={rootStore.toggleGlobalNav}
-              jumpTo={this.handleJumpTo}
-            />
+          </Sider>
+          <Layout className={styles.content}>
+            <div className={styles.breadcrumb}>
+              <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+            </div>
             <div className={styles.main}>{renderRoutes(this.routes)}</div>
-          </Col>
-        </Row>
-      </div>
+          </Layout>
+        </Layout>
+      </Layout>
     )
   }
 }

@@ -1,16 +1,23 @@
 @import '~scss/variables';
 
-.main {
-  min-width: $content-width;
-  overflow-y: auto;
-  margin: 26px 26px 0;
+.logo {
+  position: absolute;
+  width: 120px;
+  line-height: inherit;
+  height: inherit;
 }
 
-.nav {
-  left: -($nav-width + 10px);
+.content {
+  padding: '0 24px 24px';
+  @at-root .main {
+    min-width: $content-width;
+    overflow-y: auto;
+    margin: 26px 26px 0;
+  }
 }
 
 .header {
+  position: relative;
   z-index: 200;
   background-color: $layout-header-color;
   color: $white;
@@ -19,4 +26,25 @@
 .base {
   background-color: #f0f2f5;
   height: 100vh;
+}
+
+:global {
+  .ant-layout-header .ant-menu {
+    line-height: inherit;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.logininfo {
+  position: absolute;
+  top: 0;
+  right: 50px;
+}
+
+.breadcrumb {
+  margin: 0 26px;
 }

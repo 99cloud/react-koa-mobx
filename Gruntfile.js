@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         dest: 'src',
         options: {
           lngs: ['en', 'zh'],
-          removeUnusedKeys: true,
+          removeUnusedKeys: false,
           sort: false,
           keySeparator: false,
           nsSeparator: false,

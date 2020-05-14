@@ -1,26 +1,16 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { Menu } from 'antd'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { trimEnd } from 'lodash'
 
 import NavItem from './item'
-
-import styles from './index.scss'
-
-const Brand = () => (
-  <div className={styles.brand}>
-    <Link to="/">
-      {/* <img
-        className={styles.logo}
-        src={globals.config.logo || '/assets/logo.png'}
-        alt="logo"
-      /> */}
-    </Link>
-  </div>
-)
 
 class GlobalNav extends React.Component {
   static propTypes = {
@@ -30,6 +20,7 @@ class GlobalNav extends React.Component {
     checkSelect: PropTypes.func,
     onItemClick: PropTypes.func,
     innerRef: PropTypes.object,
+    isTopMenu: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -37,6 +28,7 @@ class GlobalNav extends React.Component {
     prefix: '',
     checkSelect() {},
     onItemClick() {},
+    isTopMenu: true,
   }
 
   get currentPath() {
@@ -50,17 +42,15 @@ class GlobalNav extends React.Component {
   }
 
   render() {
-    const { className, navs, innerRef, onItemClick } = this.props
-    const classNames = classnames(styles.wrapper, className)
+    const { className, navs, innerRef, onItemClick, isTopMenu } = this.props
+    const classNames = classnames(className)
 
     return (
       <div ref={innerRef} className={classNames}>
-        <Brand />
         <Menu
-          mode="inline"
+          mode={isTopMenu ? 'horizontal' : 'inline'}
           theme="dark"
           defaultSelectedKeys={navs[0].name}
-          className={styles.menu}
         >
           {navs.map(nav => (
             <NavItem
