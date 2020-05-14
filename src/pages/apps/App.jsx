@@ -1,4 +1,9 @@
-import { renderRoutes } from 'utils/router.config'
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
+import { renderRoutes } from 'react-router-config'
 
 import routes from './routes'
 

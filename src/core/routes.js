@@ -1,3 +1,8 @@
+/*
+ * Created: Fri Apr 24 2020
+ * Author: Apple
+ */
+
 import BaseLayout from 'core/layouts/Base'
 import { lazy } from 'react'
 import NotFound from 'components/NotFound'

@@ -8,7 +8,7 @@ import { Layout, Breadcrumb } from 'antd'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { renderRoutes } from 'utils/router.config'
+import { renderRoutes } from 'react-router-config'
 
 import { GlobalNav, LoginInfo } from 'components/Layout'
 
@@ -50,7 +50,7 @@ class BaseLayout extends Component {
     const { location, match } = this.props
 
     return (
-      <Layout>
+      <Layout className={styles.base}>
         <Header className="header">
           <LogoCom />
           <GlobalNav

@@ -6,7 +6,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Router } from 'react-router'
-import { renderRoutes } from 'utils/router.config'
+import { renderRoutes } from 'react-router-config'
 import { Provider } from 'mobx-react'
 
 import 'antd/dist/antd.css'

@@ -7,6 +7,10 @@
   height: inherit;
 }
 
+.base {
+  height: 100vh;
+}
+
 .content {
   padding: '0 24px 24px';
   @at-root .main {
