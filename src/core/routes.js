@@ -2,12 +2,17 @@
  * Created: Fri Apr 24 2020
  * Author: Apple
  */
-
+import React from 'react'
 import BaseLayout from 'core/layouts/Base'
-import { lazy } from 'react'
 import NotFound from 'components/NotFound'
 
-const Apps = lazy(() => import(/* webpackChunkName: "apps" */ 'apps/App.jsx'))
+import welcomeRoutes from 'pages/Welcome/routes'
+
+const Home = () => (
+  <div>
+    <h1 className="py-3">Home</h1>
+  </div>
+)
 
 export default [
   { path: '/404', component: NotFound, exact: true },
@@ -15,13 +20,12 @@ export default [
     component: BaseLayout,
     routes: [
       {
-        path: '/',
-        component: Apps,
+        path: '/home',
+        component: Home,
+        breadcrumbName: 'Home',
+        exact: true,
       },
+      ...welcomeRoutes,
     ],
-  },
-  {
-    path: '*',
-    component: Apps,
   },
 ]

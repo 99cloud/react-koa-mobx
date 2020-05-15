@@ -7,17 +7,6 @@
 1. FormModal(Form、Step Form、CodeForm)
 1. ...
 
-## Todos
-
-1. enzyme & cypress 单元测试
-1. 支持菜单栏切换到顶部
-1. ...
-
-## Need to fix
-
-1. <Spin wrapperClassName="page-loading" /> 位置
-1. Icon SVG组件无法捕获hover事件，外层加span可解决
-
 ## Developer Guide
 
 ### Preparation

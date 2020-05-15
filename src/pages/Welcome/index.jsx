@@ -10,9 +10,6 @@ import Base from 'core/containers/List'
 import WelcomeStore from 'stores/welcome'
 import CreateModal from 'components/Modals/Create'
 import EditModal from 'components/Modals/Edit'
-// eslint-disable-next-line no-unused-vars
-import DemoForm from 'components/Forms/Demo'
-
 import FORM_STEPS from 'configs/steps/welcome'
 import FORM_TEMPLATES from 'utils/form.templates'
 
@@ -23,15 +20,6 @@ class Welcome extends Base {
     this.store = new WelcomeStore()
   }
 
-  // get itemActions() {
-  //   return []
-  // }
-
-  // get enabledActions() {
-  //   const Actions = ['edit', 'delete']
-  //   return Actions
-  // }
-
   get module() {
     return 'welcome'
   }
@@ -40,7 +28,6 @@ class Welcome extends Base {
     return 'welcome'
   }
 
-  // Return <DemoForm /> or FORM_STEPS
   get steps() {
     return FORM_STEPS
   }
@@ -64,7 +51,7 @@ class Welcome extends Base {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
-      // search: true,
+      search: true,
       icon: 'iconsmile',
     },
     {

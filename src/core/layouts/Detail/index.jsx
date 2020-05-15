@@ -9,8 +9,6 @@ import PropTypes from 'prop-types'
 
 import { Layout, Spin } from 'antd'
 
-import { Breadcrumb } from 'components/Base'
-
 import styles from './index.scss'
 
 @inject('rootStore')
@@ -48,7 +46,7 @@ class DetailLayout extends Component {
   }
 
   render() {
-    const { component, rootStore, breadcrumbs, ...rest } = this.props
+    const { component, rootStore, ...rest } = this.props
     const DetailComponent = component
     const commonProps = {
       rootStore,
@@ -62,13 +60,6 @@ class DetailLayout extends Component {
 
     return (
       <Layout className={styles.wrapper}>
-        <Breadcrumb
-          params={rest.match.params}
-          pathname={rest.location.pathname}
-          breadcrumbs={breadcrumbs}
-          routes={rest.route.routes}
-          goBack={this.goBack}
-        />
         <DetailComponent {...commonProps} ref={this.detailRef} />
       </Layout>
     )

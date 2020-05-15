@@ -4,13 +4,13 @@
  */
 
 import React, { Component } from 'react'
-import { Layout, Breadcrumb } from 'antd'
+import { Layout } from 'antd'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { renderRoutes } from 'react-router-config'
 
-import { GlobalNav, LoginInfo } from 'components/Layout'
+import { GlobalNav, LoginInfo, Breadcrumb } from 'components/Layout'
 
 import styles from './index.scss'
 
@@ -75,11 +75,7 @@ class BaseLayout extends Component {
           </Sider>
           <Layout className={styles.content}>
             <div className={styles.breadcrumb}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
+              <Breadcrumb location={location} routes={this.routes} />
             </div>
             <div className={styles.main}>{renderRoutes(this.routes)}</div>
           </Layout>

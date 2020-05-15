@@ -29,6 +29,9 @@ client:
       value: 'en'
   defaultLang: 'en'
   globalNavs:
+    - name: home
+      title: Home
+      icon: iconsmile
     - name: welcome
       title: Welcome
       icon: iconsmile

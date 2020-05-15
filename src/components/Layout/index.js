@@ -4,5 +4,5 @@
  */
 
 export { default as GlobalNav } from './GlobalNav'
-export { default as Breads } from './Breads'
 export { default as LoginInfo } from './LoginInfo'
+export { default as Breadcrumb } from './Breadcrumb'

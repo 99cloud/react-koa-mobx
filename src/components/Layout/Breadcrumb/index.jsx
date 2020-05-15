@@ -1,34 +1,38 @@
+/*
+ * Created: Fri May 15 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { Breadcrumb } from 'antd'
 import { Link } from 'react-router-dom'
+import { matchRoutes } from 'react-router-config'
 
-const Breads = props => {
-  const breadcrumbNameMap = {
-    'apps/welcome': 'Welcome',
-    '/apps/1': 'Application1',
-    '/apps/2': 'Application2',
-    '/apps/1/detail': 'Detail',
-    '/apps/2/detail': 'Detail',
-  }
-
-  const { location } = props
+export default ({ location, routes }) => {
   const pathSnippets = location.pathname.split('/').filter(i => i)
+
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
+
+    const matchedRoutes = matchRoutes(routes, url)
+    if (matchedRoutes.length === 0) {
+      return null
+    }
+
+    const { route } = matchedRoutes[0]
+
     return (
       <Breadcrumb.Item key={url}>
-        <Link to={url}>{breadcrumbNameMap[url]}</Link>
+        <Link to={url}>{route.breadcrumbName}</Link>
       </Breadcrumb.Item>
     )
   })
 
   const breadcrumbItems = [
     <Breadcrumb.Item key="home">
-      <Link to="/">Home</Link>
+      <Link to="/">{t('Home')}</Link>
     </Breadcrumb.Item>,
   ].concat(extraBreadcrumbItems)
 
   return <Breadcrumb>{breadcrumbItems}</Breadcrumb>
 }
-
-export default Breads
