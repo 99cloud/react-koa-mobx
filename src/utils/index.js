@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import React from 'react'
 import { isEmpty, isString } from 'lodash'
 import moment from 'moment-mini'
@@ -22,6 +27,18 @@ export const withProps = (Component, props) => newProps => (
   <Component {...props} {...newProps} />
 )
 
+export const getBrowserLang = () => {
+  const lang = (navigator.language || navigator.browserLanguage).toLowerCase()
+
+  if (lang.indexOf('zh') !== -1) {
+    return 'zh'
+  } else if (lang.indexOf('en') !== -1) {
+    return 'en'
+  }
+
+  return globals.config.defaultLang || 'en'
+}
+
 export const LAYOUT = {
   labelCol: {
     sm: { span: 4 },
@@ -37,18 +54,6 @@ export const LAYOUT = {
     xl: { span: 10 },
     xxl: { span: 12 },
   },
-}
-
-export const getBrowserLang = () => {
-  const lang = (navigator.language || navigator.browserLanguage).toLowerCase()
-
-  if (lang.indexOf('zh') !== -1) {
-    return 'zh'
-  } else if (lang.indexOf('en') !== -1) {
-    return 'en'
-  }
-
-  return globals.config.defaultLang || 'en'
 }
 
 export const getDisplayName = item => {

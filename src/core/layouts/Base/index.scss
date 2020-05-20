@@ -1,10 +1,20 @@
 @import '~scss/variables';
 
-.logo {
+.logo{
   position: absolute;
-  width: 120px;
-  line-height: inherit;
-  height: inherit;
+  width: 210px;
+
+  a {
+    display: inline-block;
+    color: #fff;
+    font: {
+      size: 18px;
+      weight: 700
+    }
+  }
+  img {
+    height: 26px;
+  }
 }
 
 .base {
@@ -12,19 +22,13 @@
 }
 
 .content {
-  padding: '0 24px 24px';
+  padding: 24px {
+    top: 0;
+  };
   @at-root .main {
     min-width: $content-width;
-    overflow-y: auto;
     margin: 26px 26px 0;
   }
-}
-
-.header {
-  position: relative;
-  z-index: 200;
-  background-color: $layout-header-color;
-  color: $white;
 }
 
 .base {
@@ -33,8 +37,11 @@
 }
 
 :global {
-  .ant-layout-header .ant-menu {
-    line-height: inherit;
+  .ant-layout-header {
+    padding: 0 20px;
+    .ant-menu {
+      line-height: inherit;
+    }
   }
 }
 

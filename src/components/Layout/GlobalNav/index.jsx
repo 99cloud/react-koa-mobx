@@ -50,11 +50,11 @@ class GlobalNav extends React.Component {
         <Menu
           mode={isTopMenu ? 'horizontal' : 'inline'}
           theme="dark"
-          defaultSelectedKeys={navs[0].name}
+          defaultSelectedKeys={navs[0].name || 'home'}
         >
           {navs.map(nav => (
             <NavItem
-              key={nav.name}
+              key={nav.name || 'home'}
               item={nav}
               prefix=""
               current={this.currentPath}

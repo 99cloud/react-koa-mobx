@@ -30,9 +30,7 @@ export default class BaseTable extends React.Component {
     onDelete: PropTypes.func,
     onCreate: PropTypes.func,
     hideHeader: PropTypes.bool,
-    hideFooter: PropTypes.bool,
     hideSearch: PropTypes.bool,
-    hideCustom: PropTypes.bool,
     actions: PropTypes.array,
     selectActions: PropTypes.array,
     extraProps: PropTypes.object,
@@ -44,9 +42,7 @@ export default class BaseTable extends React.Component {
     selectedRowKeys: [],
     onFetch() {},
     hideHeader: false,
-    hideFooter: false,
     hideSearch: false,
-    hideCustom: false,
     extraProps: {},
   }
 
@@ -74,8 +70,10 @@ export default class BaseTable extends React.Component {
 
   handleSearch = e => {
     const content = e.target.value
-
-    this.props.onFetch({ keyword: content })
+    const params = {
+      name: content,
+    }
+    this.props.fetchList(params)
   }
 
   handleFilterInput = params => {
@@ -83,8 +81,8 @@ export default class BaseTable extends React.Component {
     params.forEach(n => {
       filters[n.key] = n.value
     })
-    // eslint-disable-next-line no-console
-    console.log('filters', filters)
+
+    this.props.fetchList(filters)
   }
 
   renderSearch() {

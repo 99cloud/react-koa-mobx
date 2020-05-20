@@ -10,7 +10,7 @@ import { toJS } from 'mobx'
 import { cacheFunc } from 'utils'
 import { isEmpty, isFunction } from 'lodash'
 import BaseTable from 'components/Tables/Base'
-import { PageHeader, Dropdown, Menu } from 'antd'
+import { Dropdown, Menu } from 'antd'
 import { MoreOutlined } from '@ant-design/icons'
 import Icon from 'components/Icon'
 import Notify from 'components/Notify'
@@ -19,10 +19,8 @@ import DeleteModal from 'components/Modals/Delete'
 import styles from './index.scss'
 
 export default class BaseList extends React.Component {
-  constructor(props, options = {}) {
+  constructor(props) {
     super(props)
-
-    this.options = options
 
     this.state = {}
 
@@ -139,6 +137,7 @@ export default class BaseList extends React.Component {
       onSelectRowKeys: this.handleSelectRowKeys,
       onCreate: this.showModal('createModal'),
       onDelete: this.showModal('batchDeleteModal'),
+      fetchList: this.handleFetchList,
     }
   }
 
@@ -174,6 +173,10 @@ export default class BaseList extends React.Component {
     this.routing.query(params, refresh)
   }
 
+  handleFetchList = params => {
+    this.store.fetchList(params)
+  }
+
   handleMoreMenuClick = item => ({ key }) => {
     const action = this.enabledItemActions.find(_action => _action.key === key)
 
@@ -187,7 +190,7 @@ export default class BaseList extends React.Component {
   handleDelete = () => {
     const { selectItem } = this.state
 
-    this.store.delete(selectItem, this.props.match.params).then(() => {
+    this.store.delete(selectItem).then(() => {
       this.hideModal('deleteModal')()
       Notify.success({ message: `${t('Deleted Successfully')}!` })
       this.routing.query()
@@ -197,15 +200,13 @@ export default class BaseList extends React.Component {
   handleBatchDelete = () => {
     const { selectedRowKeys } = this.list
 
-    if (selectedRowKeys.length > 0) {
-      this.store
-        .batchDelete(selectedRowKeys, this.props.match.params)
-        .then(() => {
-          this.hideModal('batchDeleteModal')()
-          Notify.success({ message: `${t('Deleted Successfully')}!` })
-          this.store.setSelectRowKeys([])
-          this.routing.query()
-        })
+    if (toJS(selectedRowKeys).length > 0) {
+      this.store.batchDelete(toJS(selectedRowKeys)).then(() => {
+        this.hideModal('batchDeleteModal')()
+        Notify.success({ message: `${t('Deleted Successfully')}!` })
+        this.store.setSelectRowKeys([])
+        this.routing.query()
+      })
     }
   }
 
@@ -215,65 +216,20 @@ export default class BaseList extends React.Component {
     if (!data) {
       return
     }
-    // eslint-disable-next-line no-console
-    console.log('handleCreate', data)
 
-    // const kind = MODULE_KIND_MAP[this.module]
-
-    // if (kind) {
-    //   if (Object.keys(newObject).length === 1 && newObject[kind]) {
-    //     data = newObject[kind]
-    //   }
-    // }
-
-    // this.store.create(data, this.props.match.params).then(() => {
-    //   this.hideModal('createModal')()
-    //   Notify.success({ content: `${t('Created Successfully')}!` })
-    //   this.getData({ silent: true })
-    //   formPersist.delete(`${this.module}_create_form`)
-    // })
+    this.store.create(data).then(() => {
+      this.hideModal('createModal')()
+      Notify.success({ message: `${t('Created Successfully')}!` })
+      this.getData()
+    })
   }
 
   handleEdit = newObject => {
-    // eslint-disable-next-line no-console
-    console.log('handleEdit', newObject)
-    // const { selectItem } = this.state
-
-    // this.store.patch(selectItem, newObject).then(() => {
-    //   this.hideModal('editModal')()
-    //   Notify.success({ content: `${t('Updated Successfully')}!` })
-    //   this.routing.query()
-    // })
-  }
-
-  renderEmpty() {
-    // todo:
-    return <div>{t('No Data')}</div>
-  }
-
-  renderHeader() {
-    const routes = [
-      {
-        path: 'index',
-        breadcrumbName: 'First-level Menu',
-      },
-      {
-        path: 'first',
-        breadcrumbName: 'Second-level Menu',
-      },
-      {
-        path: 'second',
-        breadcrumbName: 'Third-level Menu',
-      },
-    ]
-    return (
-      <PageHeader
-        className="site-page-header"
-        title="Title"
-        breadcrumb={{ routes }}
-        subTitle="This is a subtitle"
-      />
-    )
+    this.store.update(newObject).then(() => {
+      this.hideModal('editModal')()
+      Notify.success({ message: `${t('Updated Successfully')}!` })
+      this.routing.query()
+    })
   }
 
   renderModals() {
@@ -388,7 +344,6 @@ export default class BaseList extends React.Component {
   render() {
     return (
       <div className={classnames(styles.wrapper, this.className)}>
-        {/* {this.renderHeader()} */}
         {this.renderTable()}
         {this.renderModals()}
       </div>

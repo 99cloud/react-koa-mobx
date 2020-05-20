@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 import { notification } from 'antd'
 
 import styles from './index.scss'
@@ -7,7 +12,6 @@ const openNotificationWithIcon = (message, description, type) => {
     className: !description && styles.notify,
     message,
     description,
-    duration: 0,
   })
 }
 

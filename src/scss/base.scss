@@ -6,8 +6,10 @@ html {
 }
 
 body {
-  font-family: $font-family;
-  font-size: $body-size;
+  font: {
+    family: $font-family;
+    size: $body-size;
+  }
   color: $text-color;
   min-width: 960px;
   height: 100%;
@@ -19,8 +21,10 @@ body {
 
 button,
 input {
-  font-family: $font-family;
-  font-size: $body-size;
+  font: {
+    family: $font-family;
+    size: $body-size;
+  }
 }
 
 a {
@@ -62,9 +66,11 @@ pre {
   .#{$header} {
     display: block;
     line-height: map-get($heading-heights, $header);
-    font-size: $size;
-    font-weight: 600;
-    font-style: normal;
+    font: {
+      size: $size;
+      weight: 600;
+      style: normal;
+    }
     color: $head-color;
     text-shadow: $head-shadow;
   }

@@ -29,7 +29,7 @@ client:
       value: 'en'
   defaultLang: 'en'
   globalNavs:
-    - name: home
+    - name: ''
       title: Home
       icon: iconsmile
     - name: welcome

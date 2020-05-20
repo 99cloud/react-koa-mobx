@@ -15,6 +15,7 @@ export default ({ location, routes }) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
 
     const matchedRoutes = matchRoutes(routes, url)
+
     if (matchedRoutes.length === 0) {
       return null
     }

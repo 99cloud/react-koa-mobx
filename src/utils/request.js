@@ -1,10 +1,14 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 require('whatwg-fetch')
 const isEmpty = require('lodash/isEmpty')
 const get = require('lodash/get')
 const set = require('lodash/set')
 const merge = require('lodash/merge')
 const qs = require('qs')
-// const cookie = require('./cookie').default
 
 const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
 
@@ -82,15 +86,6 @@ function buildRequest({
   if (typeof handler === 'function') {
     responseHandler = handler
   }
-
-  // if (
-  //   cookie('currentUser') &&
-  //   globals.user &&
-  //   globals.user.username !== cookie('currentUser')
-  // ) {
-  //   location.href = '/'
-  //   return
-  // }
 
   return fetch(requestURL, request).then(resp => responseHandler(resp, reject))
 }

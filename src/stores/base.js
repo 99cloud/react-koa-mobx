@@ -6,8 +6,6 @@
 import { get } from 'lodash'
 import { action, observable } from 'mobx'
 
-// import { getFilterString } from 'utils'
-
 import List from './base.list'
 
 export default class BaseStore {
@@ -74,7 +72,7 @@ export default class BaseStore {
       current: Number(current) || 1,
       isLoading: false,
       filters,
-      ...(this.list.silent ? {} : { selectedRowKeys: [] }),
+      selectedRowKeys: [],
     })
 
     return data
@@ -100,20 +98,12 @@ export default class BaseStore {
 
   @action
   create(data) {
-    const namespace = get(data, 'metadata.namespace')
-
-    if (!namespace) {
-      return
-    }
-
-    return this.submitting(request.post(this.getListUrl({ namespace }), data))
+    return this.submitting(request.post(this.getListUrl(), data))
   }
 
   @action
-  update({ name, namespace }, newObject) {
-    return this.submitting(
-      request.put(this.getDetailUrl({ name, namespace }), newObject)
-    )
+  update(newObject) {
+    return this.submitting(request.put(this.getListUrl(), newObject))
   }
 
   @action
@@ -124,20 +114,15 @@ export default class BaseStore {
   }
 
   @action
-  delete({ name, namespace }) {
-    return this.submitting(
-      request.delete(this.getDetailUrl({ name, namespace }))
-    )
+  delete({ id }) {
+    return this.submitting(request.delete(this.getDetailUrl({ id })))
   }
 
   @action
   batchDelete(rowKeys) {
     return this.submitting(
       Promise.all(
-        rowKeys.map(name => {
-          const item = this.list.data.find(_item => _item.name === name)
-          return request.delete(this.getDetailUrl(item))
-        })
+        rowKeys.map(name => request.delete(this.getDetailUrl({ id: name })))
       )
     )
   }

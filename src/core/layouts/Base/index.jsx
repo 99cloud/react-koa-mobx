@@ -19,7 +19,8 @@ const { Header, Sider } = Layout
 const LogoCom = () => (
   <div className={styles.logo}>
     <Link to="/">
-      {/* <img src={globals.config.logo || '/assets/logo.png'} alt="logo" /> */}
+      <img src={globals.config.logo || '/assets/logo.svg'} alt="logo" />
+      React-koa-mobx
     </Link>
   </div>
 )

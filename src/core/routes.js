@@ -20,12 +20,16 @@ export default [
     component: BaseLayout,
     routes: [
       {
-        path: '/home',
+        path: '/',
         component: Home,
         breadcrumbName: 'Home',
         exact: true,
       },
       ...welcomeRoutes,
+      {
+        path: '*',
+        component: NotFound,
+      },
     ],
   },
 ]
