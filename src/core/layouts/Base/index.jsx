@@ -70,7 +70,6 @@ class BaseLayout extends Component {
               match={match}
               location={location}
               navs={globals.app.getGlobalNavs()}
-              onItemClick={this.handleNavItemClick}
               isTopMenu={false}
             />
           </Sider>

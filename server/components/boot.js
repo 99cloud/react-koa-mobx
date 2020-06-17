@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 const compress = require('koa-compress')
 const mount = require('koa-mount')
 const render = require('koa-ejs')
@@ -32,7 +37,7 @@ module.exports = function(app) {
           ctx.url
         )
       ) {
-        ctx.redirect(`http://localhost:8001${ctx.url}`)
+        ctx.redirect(`http://localhost:8080${ctx.url}`)
       } else {
         await next()
       }

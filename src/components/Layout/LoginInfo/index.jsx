@@ -63,7 +63,7 @@ export default class LoginInfo extends Component {
     const { className } = this.props
 
     return (
-      <div className={classnames(styles.logined, className)}>
+      <div className={classnames(styles.logined, className, 'logined')}>
         <Dropdown overlay={this.renderDropDown()} placement="bottomRight">
           <div className={classnames(styles.name)}>
             {globals.user.name || 'admin-default'}

@@ -8,7 +8,6 @@ const convert = require('koa-convert')
 const bodyParser = require('koa-bodyparser')
 
 const proxy = require('./middlewares/proxy')
-const checkIfExist = require('./middlewares/checkIfExist')
 
 const { handleApiProxy } = require('./proxy')
 
@@ -27,8 +26,6 @@ const parseBody = convert(
 const router = new Router()
 
 router
-  .use(checkIfExist)
-
   .use(proxy('/(k)?api(s)?/(.*)', handleApiProxy))
 
   .post('/login', parseBody, handleLogin)

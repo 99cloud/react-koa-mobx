@@ -1,3 +1,8 @@
+/*
+ * Created: Tue Apr 21 2020
+ * Author: Apple
+ */
+
 const argv = require('yargs').argv
 const semver = require('semver')
 
@@ -34,7 +39,7 @@ const app = new Koa()
 const serverConfig = getServerConfig().server
 
 global.HOSTNAME = serverConfig.http.hostname || 'localhost'
-global.PORT = serverConfig.http.port || 8000
+global.PORT = serverConfig.http.port || 8080
 
 app.keys = ['app->_<']
 
