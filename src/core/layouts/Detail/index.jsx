@@ -16,12 +16,11 @@ import styles from './index.scss'
 class DetailLayout extends Component {
   static propTypes = {
     module: PropTypes.string,
-    component: PropTypes.func.isRequired,
+    component: PropTypes.object,
   }
 
   static defaultProps = {
     module: '',
-    component() {},
   }
 
   constructor(props) {

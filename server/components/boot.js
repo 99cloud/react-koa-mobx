@@ -37,7 +37,7 @@ module.exports = function(app) {
           ctx.url
         )
       ) {
-        ctx.redirect(`http://localhost:8080${ctx.url}`)
+        ctx.redirect(`http://localhost:8081${ctx.url}`)
       } else {
         await next()
       }

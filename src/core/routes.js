@@ -6,7 +6,7 @@ import BaseLayout from 'core/layouts/Base'
 import NotFound from 'components/NotFound'
 
 import welcomeRoutes from 'pages/Welcome/routes'
-import Home from 'pages/Home'
+import { Home } from 'pages/Home'
 
 export default [
   { path: '/404', component: NotFound, exact: true },

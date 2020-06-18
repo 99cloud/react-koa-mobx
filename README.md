@@ -40,7 +40,7 @@ yarn config set registry https://registry.npm.taobao.org
 yarn start
 ```
 
-Now, you can access http://localhost:8000 to view the app.
+Now, you can access http://localhost:8080 to view the app.
 
 ### Run tests
 

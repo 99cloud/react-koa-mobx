@@ -88,21 +88,13 @@ export default class BaseTable extends React.Component {
   renderSearch() {
     const { hideSearch, dropDowns } = this.props
 
-    const params = {
-      query: [],
-    }
-
     if (hideSearch) {
       return null
     }
 
     if (!isEmpty(dropDowns)) {
       return (
-        <SearchBar
-          params={params}
-          dropDowns={dropDowns}
-          onChange={this.handleFilterInput}
-        />
+        <SearchBar dropDowns={dropDowns} onChange={this.handleFilterInput} />
       )
     }
 

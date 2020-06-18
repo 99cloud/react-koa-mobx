@@ -17,14 +17,13 @@ import styles from './index.scss'
 @observer
 export default class SearchBar extends React.Component {
   static propType = {
-    params: PropTypes.object.isRequired,
     onChange: PropTypes.func,
     dropDowns: PropTypes.object.isRequired,
     enableClear: PropTypes.bool,
   }
 
   static defaultProps = {
-    enableClear: false,
+    enableClear: true,
     onChange() {},
   }
 
@@ -37,6 +36,11 @@ export default class SearchBar extends React.Component {
   @observable
   nextParamsKey = ''
 
+  @observable
+  params = {
+    query: [],
+  }
+
   @computed
   get currentParamText() {
     const { dropDowns } = this.props
@@ -48,7 +52,8 @@ export default class SearchBar extends React.Component {
 
   @action
   removeParam = event => {
-    const { onChange, params } = this.props
+    const { onChange } = this.props
+    const params = this.params
     const key = get(event, 'currentTarget.dataset.key')
     const currentParams = params.query.filter(param => param.key !== key)
     params.query = currentParams
@@ -74,12 +79,12 @@ export default class SearchBar extends React.Component {
       return
     }
     if (this.nextParamsKey) {
-      this.props.params.query.push({
+      this.params.query.push({
         key: this.nextParamsKey,
         value: this.searchWord,
       })
     } else {
-      this.props.params.query.push({
+      this.params.query.push({
         key: Object.keys(dropDowns)[0],
         value: this.searchWord,
       })
@@ -90,7 +95,7 @@ export default class SearchBar extends React.Component {
     this.nextParamsKey = ''
 
     this.focus()
-    onChange(this.props.params.query)
+    onChange(this.params.query)
   }
 
   @action
@@ -112,7 +117,8 @@ export default class SearchBar extends React.Component {
   }
 
   renderParamsTags() {
-    const { dropDowns, params } = this.props
+    const { dropDowns } = this.props
+    const params = this.params
     return params.query.map(({ key, value }, index) =>
       key ? (
         <span className={styles.param} key={index}>
@@ -153,9 +159,8 @@ export default class SearchBar extends React.Component {
   }
 
   renderDropdownContent() {
-    const { dropDowns, params } = this.props
-    const selectedParams = params.query.map(param => param.key)
-    const filteredDropDowns = omit(dropDowns, selectedParams)
+    const selectedParams = this.params.query.map(param => param.key)
+    const filteredDropDowns = omit(this.props.dropDowns, selectedParams)
 
     if (isEmpty(filteredDropDowns)) {
       return null
@@ -182,7 +187,13 @@ export default class SearchBar extends React.Component {
     )
   }
 
-  renderClear() {}
+  renderClear() {
+    return (
+      <span className={styles.icon}>
+        <Icon name="iconclose" size={20} />
+      </span>
+    )
+  }
 
   render() {
     const { enableClear, className } = this.props

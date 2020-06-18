@@ -141,7 +141,7 @@ const config = {
       'Access-Control-Allow-Origin': '*',
     },
     host: '0.0.0.0',
-    port: 8088,
+    port: 8081,
   },
 }
 
